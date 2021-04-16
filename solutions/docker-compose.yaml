@@ -1,0 +1,20 @@
+version: '2'
+services:
+  csvserver:
+    image: infracloudio/csvserver
+    container_name: csvserver
+    volumes:
+      - '/home/i313668/MuthuNambiHaranMuthiah/solutions/inputFile:/csvserver/inputdata'
+    ports:
+      - 9393:9300
+    env_file: 
+      - csv_file.env
+  prometheus:
+    image: prom/prometheus:v2.22.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports: 
+    - 9090:9090
