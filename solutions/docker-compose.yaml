@@ -1,0 +1,11 @@
+version: '2'
+services:
+  csvserver:
+    image: infracloudio/csvserver
+    container_name: csvserver
+    volumes:
+      - '/home/i313668/MuthuNambiHaranMuthiah/solutions/inputFile:/csvserver/inputdata'
+    ports:
+      - 9393:9300
+    env_file: 
+      - csv_file.env
